@@ -1,0 +1,172 @@
+### Получение товара,списка товаров
+GET http://localhost:8000/api/v1/product/
+Content-Type: application/json
+
+### Создание товара
+POST http://localhost:8000/api/v1/product/
+Content-Type: application/json
+Authorization: Token 7b27e08f875629bc60a1a1c678a3d9d59ab60854
+
+{
+    "title":"Lenovo 222",
+    "description":"best",
+    "price": 1500
+}
+
+### Изменение товара
+PATCH  http://localhost:8000/api/v1/product/1/
+Content-Type: application/json
+Authorization: Token 7b27e08f875629bc60a1a1c678a3d9d59ab60854
+
+{
+    "title":"Lenovo 222",
+    "description":"best",
+    "price": 1500
+}
+
+### Удаление товаров
+DELETE http://localhost:8000/api/v1/product/1/
+Content-Type: application/json
+Authorization: Token 7b27e08f875629bc60a1a1c678a3d9d59ab60854
+
+### Фильтрация товаров по цене
+GET http://localhost:8000/api/v1/product/?price_min=2550&price_max=2570
+Content-Type: application/json
+
+### Фильтрация товаров по названию
+GET http://localhost:8000/api/v1/product/?title=Iphone
+Content-Type: application/json
+
+
+### Фильтрация товаров по описание
+GET http://localhost:8000/api/v1/product/?description=best
+Content-Type: application/json
+
+
+
+
+### Получение отзывов/отзыва
+GET http://localhost:8000/api/v1/reviews/
+Content-Type: application/json
+
+### Создать отзыв
+POST  http://localhost:8000/api/v1/reviews/
+Content-Type: application/json
+Authorization: Token 91048aa87d4f7f6de108275c90396aa03abf097a
+
+{
+    "product":2,
+    "mark":"ON",
+    "text": "sssssssssssssss"
+}
+
+### Редактировать отзыв
+PATCH   http://localhost:8000/api/v1/reviews/16/
+Content-Type: application/json
+Authorization: Token 91048aa87d4f7f6de108275c90396aa03abf097a
+
+{   
+    "mark":"ON",
+    "text": "парваравр"
+}
+
+### Удалить отзыв
+DELETE    http://localhost:8000/api/v1/reviews/15/
+Content-Type: application/json
+Authorization: Token 91048aa87d4f7f6de108275c90396aa03abf097a
+
+### Сортировка отзывов по дате создания
+GET http://localhost:8000/api/v1/reviews/?created_at_after=2021-02-20
+Content-Type: application/json
+
+### Сортировка отзывов по пользователю
+GET http://localhost:8000/api/v1/reviews/?creator=3
+Content-Type: application/json
+
+### Сортировка отзывов по товару
+GET http://localhost:8000/api/v1/reviews/?product=1
+Content-Type: application/json
+
+
+### Получение коллекции, коллекций
+GET http://localhost:8000/api/v1/collection
+Content-Type: application/json
+
+### Создание коллекции
+POST   http://localhost:8000/api/v1/collection/
+Content-Type: application/json
+Authorization: Token 7b27e08f875629bc60a1a1c678a3d9d59ab60854
+
+{
+    "title":"SUPE",
+    "description": "sdasdasdasdasda",
+    "product":[1,2]
+}
+
+### Изменение коллекции
+PATCH    http://localhost:8000/api/v1/collection/1/
+Content-Type: application/json
+Authorization: Token 7b27e08f875629bc60a1a1c678a3d9d59ab60854
+
+{
+    "product":[2]
+}
+
+
+### Удаление коллекции
+DELETE    http://localhost:8000/api/v1/collection/1/
+Content-Type: application/json
+Authorization: Token 7b27e08f875629bc60a1a1c678a3d9d59ab60854
+
+
+### Получение заказа, заказов(Для каждого пользователя свои, для админа все)
+GET  http://localhost:8000/api/v1/orders
+Content-Type: application/json
+Authorization: Token 7b27e08f875629bc60a1a1c678a3d9d59ab60854
+
+### Создание заказа
+POST  http://localhost:8000/api/v1/orders/
+Content-Type: application/json
+Authorization: Token 91048aa87d4f7f6de108275c90396aa03abf097a
+
+{
+    "item":[
+        {"product": 2, "quantity":22}
+    ]
+}
+
+### Изменение заказа
+PATCH  http://localhost:8000/api/v1/orders/18/
+Content-Type: application/json
+Authorization: Token 91048aa87d4f7f6de108275c90396aa03abf097a
+
+{   
+
+    "item":[
+        {"product": 2, "quantity":10},
+        {"product": 1, "quantity":10},
+        {"product": 3, "quantity":20},
+        {"product": 4, "quantity":50}
+    ]
+}
+
+### Изменение статуса заказа(доступно только админам)
+PATCH  http://localhost:8000/api/v1/orders/18/
+Content-Type: application/json
+Authorization: Token 7b27e08f875629bc60a1a1c678a3d9d59ab60854
+
+{   
+    "status":"P"
+}
+
+### Удаление заказа
+DELETE  http://localhost:8000/api/v1/orders/19/
+Content-Type: application/json
+Authorization: Token 91048aa87d4f7f6de108275c90396aa03abf097a
+
+### Фильтрация по названием товара в заказе
+GET  http://localhost:8000/api/v1/orders/?pozition_orders__title=Iphone X&pozition_orders__title=Iphone
+Content-Type: application/json
+Authorization: Token 7b27e08f875629bc60a1a1c678a3d9d59ab60854
+
+
