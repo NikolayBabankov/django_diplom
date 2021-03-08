@@ -15,7 +15,9 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from api_shop.views import OrderViewSet,ProductViewSet,ReviewViewSet,CollectionViewSet
+from review.views import ReviewViewSet
+from catalog.views import ProductViewSet, CollectionViewSet
+from orders.views import OrderViewSet
 from rest_framework.routers import DefaultRouter
 
 

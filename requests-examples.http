@@ -5,29 +5,29 @@ Content-Type: application/json
 ### Создание товара
 POST http://localhost:8000/api/v1/product/
 Content-Type: application/json
-Authorization: Token 7b27e08f875629bc60a1a1c678a3d9d59ab60854
+Authorization: Token 2ef58c5579ba703e7b0db22dd9daaed0f45909e8
 
 {
-    "title":"Lenovo 222",
-    "description":"best",
-    "price": 1500
+    "title":"Iphone 5s",
+    "description":"phone best",
+    "price": 150
 }
 
 ### Изменение товара
-PATCH  http://localhost:8000/api/v1/product/1/
+PATCH  http://localhost:8000/api/v1/product/6/
 Content-Type: application/json
-Authorization: Token 7b27e08f875629bc60a1a1c678a3d9d59ab60854
+Authorization: Token d200099742042bfc2e8cecfc874c67a3166527df
 
 {
-    "title":"Lenovo 222",
-    "description":"best",
-    "price": 1500
+    "title":"Lenovo X2",
+    "description":"super",
+    "price": 150
 }
 
 ### Удаление товаров
-DELETE http://localhost:8000/api/v1/product/1/
+DELETE http://localhost:8000/api/v1/product/3/
 Content-Type: application/json
-Authorization: Token 7b27e08f875629bc60a1a1c678a3d9d59ab60854
+Authorization: Token d200099742042bfc2e8cecfc874c67a3166527df
 
 ### Фильтрация товаров по цене
 GET http://localhost:8000/api/v1/product/?price_min=2550&price_max=2570
@@ -52,18 +52,18 @@ Content-Type: application/json
 ### Создать отзыв
 POST  http://localhost:8000/api/v1/reviews/
 Content-Type: application/json
-Authorization: Token 91048aa87d4f7f6de108275c90396aa03abf097a
+Authorization: Token d200099742042bfc2e8cecfc874c67a3166527df
 
 {
-    "product":2,
-    "mark":"ON",
-    "text": "sssssssssssssss"
+    "product":4,
+    "mark":"FV",
+    "text": "super puper"
 }
 
 ### Редактировать отзыв
-PATCH   http://localhost:8000/api/v1/reviews/16/
+PATCH   http://localhost:8000/api/v1/reviews/3/
 Content-Type: application/json
-Authorization: Token 91048aa87d4f7f6de108275c90396aa03abf097a
+Authorization: Token 2ef58c5579ba703e7b0db22dd9daaed0f45909e8
 
 {   
     "mark":"ON",
@@ -80,7 +80,7 @@ GET http://localhost:8000/api/v1/reviews/?created_at_after=2021-02-20
 Content-Type: application/json
 
 ### Сортировка отзывов по пользователю
-GET http://localhost:8000/api/v1/reviews/?creator=3
+GET http://localhost:8000/api/v1/reviews/?creator=1
 Content-Type: application/json
 
 ### Сортировка отзывов по товару
@@ -95,21 +95,21 @@ Content-Type: application/json
 ### Создание коллекции
 POST   http://localhost:8000/api/v1/collection/
 Content-Type: application/json
-Authorization: Token 7b27e08f875629bc60a1a1c678a3d9d59ab60854
+Authorization: Token d200099742042bfc2e8cecfc874c67a3166527df
 
 {
-    "title":"SUPE",
-    "description": "sdasdasdasdasda",
-    "product":[1,2]
+    "title":"Phone",
+    "description": "Best Phone",
+    "product":[4,1,6]
 }
 
 ### Изменение коллекции
-PATCH    http://localhost:8000/api/v1/collection/1/
+PATCH    http://localhost:8000/api/v1/collection/2/
 Content-Type: application/json
-Authorization: Token 7b27e08f875629bc60a1a1c678a3d9d59ab60854
+Authorization: Token d200099742042bfc2e8cecfc874c67a3166527df
 
 {
-    "product":[2]
+    "product":[5]
 }
 
 
@@ -120,53 +120,50 @@ Authorization: Token 7b27e08f875629bc60a1a1c678a3d9d59ab60854
 
 
 ### Получение заказа, заказов(Для каждого пользователя свои, для админа все)
-GET  http://localhost:8000/api/v1/orders
+GET  http://localhost:8000/api/v1/orders/
 Content-Type: application/json
-Authorization: Token 7b27e08f875629bc60a1a1c678a3d9d59ab60854
+Authorization: Token 2ef58c5579ba703e7b0db22dd9daaed0f45909e8
 
 ### Создание заказа
 POST  http://localhost:8000/api/v1/orders/
 Content-Type: application/json
-Authorization: Token 91048aa87d4f7f6de108275c90396aa03abf097a
+Authorization: Token 2ef58c5579ba703e7b0db22dd9daaed0f45909e8
 
 {
     "item":[
-        {"product": 2, "quantity":22}
+        {"product": 6, "quantity":1},
+        {"product": 4, "quantity":1},
+        {"product": 5, "quantity":1}
     ]
 }
 
 ### Изменение заказа
-PATCH  http://localhost:8000/api/v1/orders/18/
+PATCH  http://localhost:8000/api/v1/orderss/27/
 Content-Type: application/json
-Authorization: Token 91048aa87d4f7f6de108275c90396aa03abf097a
+Authorization: Token 2ef58c5579ba703e7b0db22dd9daaed0f45909e8
 
 {   
 
     "item":[
-        {"product": 2, "quantity":10},
-        {"product": 1, "quantity":10},
-        {"product": 3, "quantity":20},
-        {"product": 4, "quantity":50}
+        {"product": 5, "quantity":100}
     ]
 }
 
 ### Изменение статуса заказа(доступно только админам)
-PATCH  http://localhost:8000/api/v1/orders/18/
+PATCH  http://localhost:8000/api/v1/orders/4/
 Content-Type: application/json
-Authorization: Token 7b27e08f875629bc60a1a1c678a3d9d59ab60854
+Authorization: Token 2ef58c5579ba703e7b0db22dd9daaed0f45909e8
 
 {   
-    "status":"P"
+    "status":"N"
 }
 
 ### Удаление заказа
-DELETE  http://localhost:8000/api/v1/orders/19/
+DELETE  http://localhost:8000/api/v1/orders/5/
 Content-Type: application/json
-Authorization: Token 91048aa87d4f7f6de108275c90396aa03abf097a
+Authorization: Token 2ef58c5579ba703e7b0db22dd9daaed0f45909e8
 
 ### Фильтрация по названием товара в заказе
-GET  http://localhost:8000/api/v1/orders/?pozition_orders__title=Iphone X&pozition_orders__title=Iphone
+GET  http://localhost:8000/api/v1/orders/?sum_orders_max=750
 Content-Type: application/json
-Authorization: Token 7b27e08f875629bc60a1a1c678a3d9d59ab60854
-
-
+Authorization: Token d200099742042bfc2e8cecfc874c67a3166527df

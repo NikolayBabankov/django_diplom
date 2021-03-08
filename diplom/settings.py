@@ -40,11 +40,13 @@ INSTALLED_APPS = [
     'django_filters',
     'rest_framework',
     'rest_framework.authtoken',
-    'api_shop',
-   
+    'catalog',
+    'orders',
+    'review'
 ]
-REST_FRAMEWORK ={    'DEFAULT_AUTHENTICATION_CLASSES': 
-['rest_framework.authentication.TokenAuthentication',],
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES':
+    ['rest_framework.authentication.TokenAuthentication'],
 }
 
 MIDDLEWARE = [
