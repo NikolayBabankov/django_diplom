@@ -12,7 +12,8 @@ def api_client():
 
 @pytest.fixture
 def super_user_client():
-    user = User.objects.create_superuser('myadmin', 'myemail@s.com', 'mypassword')
+    user = User.objects.create_superuser(
+        'myadmin', 'myemail@s.com', 'mypassword')
     token = Token.objects.get_or_create(user_id=user.id)
     list_token = list(token)
     client = APIClient()
@@ -45,6 +46,7 @@ def product_factory():
     def factory(**kwargs):
         return baker.make('Product', **kwargs)
     return factory
+
 
 @pytest.fixture
 def collection_factory():
